@@ -10,7 +10,7 @@ def create_pattern_visualizations():
     engine = create_engine('sqlite:///database/bike_sharing.db')
     df = pd.read_sql_query("SELECT * FROM processed_bike_data", engine)
     
-    print("📊 Creating pattern visualizations...")
+    print("Creating pattern visualizations...")
     
     # Set up the plotting style, makes our plots look nice and simple
     plt.style.use('default')
@@ -88,7 +88,7 @@ def create_pattern_visualizations():
     plt.show()
     
     # Print some key insights
-    print("\n🔍 KEY INSIGHTS:")
+    print("\nKEY INSIGHTS:")
     print(f"• Best weather comfort score yields {comfort_usage['Perfect']:.0f} bikes/hour")
     print(f"• Worst weather comfort score yields {comfort_usage['Awful']:.0f} bikes/hour")
     print(f"• Peak usage hour: {hourly_usage.idxmax()}:00 with {hourly_usage.max():.0f} bikes")

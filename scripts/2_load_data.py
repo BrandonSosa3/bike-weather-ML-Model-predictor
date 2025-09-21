@@ -10,7 +10,7 @@ def load_csv_to_database():
     # Check if files exist
     csv_path = Path('data/raw/hour.csv')
     if not csv_path.exists():
-        print("❌ CSV file not found! Run download_data.py first.")
+        print("CSV file not found! Run download_data.py first.")
         return
     
     # Connect to database
@@ -20,13 +20,13 @@ def load_csv_to_database():
     
     # Load the CSV
     df = pd.read_csv(csv_path)
-    print(f"✅ Loaded {len(df)} rows from CSV")
+    print(f"Loaded {len(df)} rows from CSV")
     
     # Convert the date column from string to actual date
-    print("🔄 Converting date format...")
+    print("Converting date format...")
     df['dteday'] = pd.to_datetime(df['dteday'])
     
-    print("💾 Inserting data into database...")
+    print("Inserting data into database...")
     
     # Insert data into database uses pandas function to_sql
     df.to_sql(
@@ -37,14 +37,14 @@ def load_csv_to_database():
         method='multi'        # Faster insertion for large datasets
     )
     
-    print("✅ Data loaded successfully!")
+    print("Data loaded successfully!")
     
     # Verify what we loaded
     # COUNT(*) - asks how many total rows are in the table
     # MIN(dteday) - the earliest date 
     # MAX(dteday) - the lastest date
     # AVG(cnt) - the avergae of the cnt column (the number of bike rentals per hour/day)
-    print("\n🔍 Verification:")
+    print("\nVerification:")
     verification_query = """
     SELECT 
         COUNT(*) as total_rows,

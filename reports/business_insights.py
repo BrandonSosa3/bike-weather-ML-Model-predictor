@@ -4,13 +4,6 @@ import matplotlib.pyplot as plt
 def generate_business_recommendations():
     """Generate actionable business insights from our model"""
     
-    print("💼 BUSINESS INSIGHTS & RECOMMENDATIONS")
-    print("=" * 50)
-    
-    print("🎯 KEY FINDINGS:")
-    print("=" * 20)
-    
-
     # Here we have a list of dictionaries, each dict has 3 parts:
     # 1. Finding = the high level observation
     # 2. Insight = the detailed explanation, often with numbers or stats
@@ -42,19 +35,18 @@ def generate_business_recommendations():
     # enumerate(findings, 1) → gives both the index (i) starting at 1, and the actual dictionary (item).
     for i, item in enumerate(findings, 1):
         print(f"\n{i}. 🔍 {item['finding']}")
-        print(f"   📊 Insight: {item['insight']}")
-        print(f"   💡 Action: {item['action']}")
+        print(f"   Insight: {item['insight']}")
+        print(f"   Action: {item['action']}")
     
-    print(f"\n🚀 OPERATIONAL RECOMMENDATIONS:")
-    print("=" * 35)
+    print(f"\nOPERATIONAL RECOMMENDATIONS:")
     
     recommendations = [
-        "📈 Station Rebalancing: Focus on 7-9am and 5-7pm windows",
-        "🌧️ Weather Response: Reduce weekend staffing when rain forecast",
-        "💰 Dynamic Pricing: Premium rates during perfect weather rush hours",
-        "🔧 Maintenance Windows: Schedule during early morning (6am) low usage",
-        "📱 User Notifications: Weather-based usage alerts for weekend riders",
-        "📊 Capacity Planning: Size stations based on rush hour + weather premium"
+        "Station Rebalancing: Focus on 7-9am and 5-7pm windows",
+        "Weather Response: Reduce weekend staffing when rain forecast",
+        "Dynamic Pricing: Premium rates during perfect weather rush hours",
+        "Maintenance Windows: Schedule during early morning (6am) low usage",
+        "User Notifications: Weather-based usage alerts for weekend riders",
+        "Capacity Planning: Size stations based on rush hour + weather premium"
     ]
     
     for rec in recommendations:
@@ -63,7 +55,7 @@ def generate_business_recommendations():
 def create_final_summary_visualization():
     """Create a final summary chart of our discoveries"""
     
-    print(f"\n📊 Creating final summary visualization...")
+    print(f"\nCreating final summary visualization...")
     
     # Import the prediction function from our interface
     from models.prediction_interface import create_prediction_interface
@@ -99,7 +91,7 @@ def create_final_summary_visualization():
         plt.text(bar.get_x() + bar.get_width()/2., height + 10,
                 f'{height:.0f}', ha='center', va='bottom', fontweight='bold')
     
-    plt.title('Bike Share Usage Predictions by Scenario\n(Your AI Model Results)', 
+    plt.title('Bike Share Usage Predictions by Scenario', 
               fontsize=16, fontweight='bold', pad=20)
     plt.ylabel('Predicted Bikes per Hour', fontsize=12)
     plt.xlabel('Weather & Time Scenarios', fontsize=12)
@@ -117,7 +109,7 @@ def create_final_summary_visualization():
     plt.savefig('final_project_summary.png', dpi=300, bbox_inches='tight')
     plt.show()
     
-    print("📁 Final summary chart saved as: final_project_summary.png")
+    print("Final summary chart saved as: final_project_summary.png")
 
 if __name__ == "__main__":
     generate_business_recommendations()

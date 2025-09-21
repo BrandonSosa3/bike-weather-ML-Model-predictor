@@ -6,16 +6,16 @@ def analyze_weather_activity_patterns():
     
     engine = create_engine('sqlite:///database/bike_sharing.db')
     
-    print("📊 WEATHER & ACTIVITY PATTERN ANALYSIS")
+    print("WEATHER & ACTIVITY PATTERN ANALYSIS")
     print("=" * 50)
     
     # Load our enhanced data, the query means to get all rows and cols from processed_bike_data table
     df = pd.read_sql_query("SELECT * FROM processed_bike_data", engine)
     
-    print(f"📈 Analyzing {len(df)} hours of bike usage data")
+    print(f"Analyzing {len(df)} hours of bike usage data")
     
     # 1. Weather Impact Analysis
-    print("\n🌤️  Weather Impact on Bike Usage:")
+    print("\nWeather Impact on Bike Usage:")
     
     # Group by weather situation and see average usage
     # df.groupby("weathersit") means group all of our rows based on the col weathersit, 
@@ -35,7 +35,7 @@ def analyze_weather_activity_patterns():
     print(weather_impact)
     
     # 2. Temperature Sweet Spot Analysis
-    print("\n🌡️  Temperature Sweet Spot:")
+    print("\nTemperature Sweet Spot:")
     
     # Create temperature bins and see usage patterns
     # here we are trying to see how bike usage count depends on weather
@@ -57,7 +57,7 @@ def analyze_weather_activity_patterns():
         print(f"  {category}: {value} bikes/hour")
     
     # 3. Rush Hour vs Weather Interaction
-    print("\n⏰ Rush Hour vs Weather Patterns:")
+    print("\nRush Hour vs Weather Patterns:")
     # in the df we group the rows by the is_rush_hour and weathersit
     # then we only want the ['cnt'].mean().round(1) mean bike counts for these cols
     rush_weather = df.groupby(['is_rush_hour', 'weathersit'])['cnt'].mean().round(1)
@@ -65,7 +65,7 @@ def analyze_weather_activity_patterns():
     print(rush_weather)
     
     # 4. Weekend vs Weekday Weather Sensitivity
-    print("\n📅 Weekend vs Weekday Weather Sensitivity:")
+    print("\nWeekend vs Weekday Weather Sensitivity:")
     # same as above, but here is the understanding of the output: 
     ''' We have 2 weekend categories × 4 weather types = 8 combinations:
         is_weekend=0 (WEEKDAYS):
@@ -84,7 +84,7 @@ def analyze_weather_activity_patterns():
     print(weekend_weather)
     
     # 5. Our Weather Comfort Index Performance
-    print("\n🎯 Weather Comfort Index Validation:")
+    print("\nWeather Comfort Index Validation:")
     
     # See if our comfort index correlates with actual usage
     # rememeber in our pipeline earlier we created a "custom comfort index" that combined temp, humidity, and wind

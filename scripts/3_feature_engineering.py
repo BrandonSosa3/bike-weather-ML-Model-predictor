@@ -8,20 +8,17 @@ def create_enhanced_features():
     
     engine = create_engine('sqlite:///database/bike_sharing.db')
     
-    print("🔧 FEATURE ENGINEERING")
-    print("=" * 50)
-    
     # Load data
     df = pd.read_sql_query("SELECT * FROM raw_bike_data", engine)
     
-    print(f"📊 Starting with {len(df.columns)} columns")
+    print(f"Starting with {len(df.columns)} columns")
     
     # Convert dteday to datetime for easier manipulation
     # Converts the dteday column (a string like "2011-01-01") into a proper datetime64 object so we can extract day, month, weekday, etc.
     df['dteday'] = pd.to_datetime(df['dteday'])
     
     # Create weather comfort features
-    print("🌤️  Creating weather comfort features...")
+    print("Creating weather comfort features...")
     
     # Temperature comfort (closer to 0.5 = more comfortable), does some tricky math
     df['temp_comfort'] = 1 - abs(df['temp'] - 0.5) * 2
@@ -35,7 +32,7 @@ def create_enhanced_features():
                             (1 - df['wind_discomfort']) * 0.3)
     
     # Create time-based features
-    print("⏰ Creating time-based features...")
+    print("Creating time-based features...")
     
     # Rush hour indicators, creates a brand new column in the df called is_rush_hour "|" means or here
     # .astype(int) just converts True -> 1 and false -> 0
@@ -60,18 +57,18 @@ def create_enhanced_features():
     df['is_weekend'] = (df['weekday'].isin([0, 6])).astype(int)
     
     # now we see how many new columns (features) we added. since we started originally with 17
-    print(f"✅ Created {len(df.columns) - 17} new features")
-    print(f"📊 Now have {len(df.columns)} total columns")
+    print(f"Created {len(df.columns) - 17} new features")
+    print(f"Now have {len(df.columns)} total columns")
     
     # Show some examples of our new features
-    print(f"\n🔍 Sample of new features:")
+    print(f"\nSample of new features:")
     # list of selected columns we want to show
     sample_cols = ['hr', 'temp', 'windspeed', 'hum', 'weather_comfort', 'is_rush_hour', 'cnt']
     # .head() takes the first 5 rows only, .to_string() prints them in a neat aligned table format
     print(df[sample_cols].head().to_string())
     
     # NEW: Save our enhanced features to the database permanently
-    print("\n💾 Saving enhanced features to database...")
+    print("\nSaving enhanced features to database...")
     
     # Write the enhanced DataFrame to a new table called 'processed_bike_data'
     # if_exists='replace' means if the table already exists, overwrite it completely
@@ -85,17 +82,17 @@ def create_enhanced_features():
         method='multi'                # faster insertion method
     )
     
-    print("✅ Enhanced data saved to 'processed_bike_data' table!")
+    print("Enhanced data saved to 'processed_bike_data' table!")
     
     # Verify what we saved by counting rows in the new table
     verification = pd.read_sql_query(
         "SELECT COUNT(*) as total_rows FROM processed_bike_data", 
         engine
     )
-    print(f"📊 Verified: {verification['total_rows'][0]} rows saved to database")
+    print(f"Verified: {verification['total_rows'][0]} rows saved to database")
     
     # Quick peek at what's now in our database
-    print(f"\n🗃️  Database now contains:")
+    print(f"\nDatabase now contains:")
     tables_query = "SELECT name FROM sqlite_master WHERE type='table';"
     tables = pd.read_sql_query(tables_query, engine)
     for table in tables['name']:

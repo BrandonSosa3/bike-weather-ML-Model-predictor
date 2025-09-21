@@ -17,7 +17,7 @@ def download_bike_sharing_data():
     raw_data_path = Path('data/raw')
     raw_data_path.mkdir(parents=True, exist_ok=True)
     
-    print("📥 Downloading bike sharing dataset...")
+    print("Downloading bike sharing dataset...")
     
     try:
         # Download the dataset
@@ -26,17 +26,17 @@ def download_bike_sharing_data():
             path='data/raw/',
             unzip=True
         )
-        print("✅ Dataset downloaded successfully!")
+        print("Dataset downloaded successfully!")
         
         # List what we got
-        print("\n📁 Files downloaded:")
+        print("\nFiles downloaded:")
         for file in raw_data_path.glob('*'):
             print(f"  - {file.name}")
             
         return True
         
     except Exception as e:
-        print(f"❌ Download failed: {e}")
+        print(f"Download failed: {e}")
         return False
 
 if __name__ == "__main__":

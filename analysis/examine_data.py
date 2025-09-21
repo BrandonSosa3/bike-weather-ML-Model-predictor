@@ -6,11 +6,11 @@ def examine_raw_data():
     
     data_path = Path('data/raw')
     
-    print("🔍 Examining our raw data files...\n")
+    print("Examining our raw data files...\n")
     
     # Look at hour.csv (this is our main dataset)
     if (data_path / 'hour.csv').exists():
-        print("📊 HOUR.CSV - Our main dataset:")
+        print("HOUR.CSV - Our main dataset:")
         
         # Load just the first few rows to peek
         df = pd.read_csv(data_path / 'hour.csv')
@@ -43,7 +43,7 @@ def examine_raw_data():
         print(df.head(3).to_string())
         
     else:
-        print("❌ hour.csv not found!")
+        print("hour.csv not found!")
 
 if __name__ == "__main__":
     examine_raw_data()

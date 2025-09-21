@@ -10,21 +10,13 @@ load_dotenv()
 
 # Create our database models
 """1. What is declarative_base()?
-
 declarative_base() is a function provided by SQLAlchemy.
-
 It creates a special base class that your database models (tables) will inherit from.
-
-This base class keeps track of all the classes (models) you define, and later it can be used to create the actual database schema.
-
+This base class keeps track of all the classes (models) you define, and later it can be used to create the actual database schema
 2. Why assign it to Base?
-
 By writing Base = declarative_base(), you give a name (Base) to this base class.
-
 All your models (representing tables) will extend it, like this:
-
 from sqlalchemy import Column, Integer, String
-
 class User(Base):  # inherits from Base
     __tablename__ = "users"   # name of the table in the database
     id = Column(Integer, primary_key=True)
@@ -62,13 +54,13 @@ def create_database():
     # Create database connection
     engine = create_engine('sqlite:///database/bike_sharing.db')
     
-    print("🗃️  Creating database tables...")
+    print("Creating database tables...")
     
     # Create all tables
     Base.metadata.create_all(engine)
     
-    print("✅ Database created successfully!")
-    print(f"📍 Database location: database/bike_sharing.db")
+    print("Database created successfully!")
+    print(f"Database location: database/bike_sharing.db")
     
     return engine
 
