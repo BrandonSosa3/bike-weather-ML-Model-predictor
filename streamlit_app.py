@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 # Page config
 st.set_page_config(
     page_title="Bike Share Demand Forecasting",
-    page_icon="📊",
+    page_icon="*",
     layout="wide"
 )
 
