@@ -1,0 +1,63 @@
+# Environment and API keys
+.env
+.env.local
+.env.*.local
+*.key
+kaggle.json
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Database files (we'll regenerate these)
+*.db
+*.sqlite
+*.sqlite3
+
+# Data files (large datasets)
+data/raw/
+data/processed/
+*.csv
+*.json
+*.parquet
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and temporary files
+*.log
+logs/
+temp/
+tmp/
+
+# Model files (can be large)
+models/
+*.pkl
+*.joblib
+*.h5
+*.onnx
