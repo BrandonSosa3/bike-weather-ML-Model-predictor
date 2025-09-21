@@ -22,14 +22,14 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Database files (we'll regenerate these)
-*.db
-*.sqlite
-*.sqlite3
+#*.db
+#*.sqlite
+#*.sqlite3
 
 # Data files (large datasets)
-data/raw/
-data/processed/
-*.csv
+#data/raw/
+#data/processed/
+#*.csv
 *.json
 *.parquet
 
