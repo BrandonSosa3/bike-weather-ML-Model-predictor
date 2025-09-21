@@ -66,7 +66,7 @@ def create_final_summary_visualization():
     print(f"\n📊 Creating final summary visualization...")
     
     # Import the prediction function from our interface
-    from prediction_interface import create_prediction_interface
+    from models.prediction_interface import create_prediction_interface
     
     # Get the actual prediction function
     # calls create_prediction_interface() which returns 
